@@ -1,0 +1,109 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "voice banking",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "hello",
+            "how are you",
+            "say hi world",
+            "say hi",
+            "hi",
+            "say hello world",
+            "say hello"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CreditCardBillIntent",
+          "slots": [],
+          "samples": [
+            "how much is my credit card bill this month",
+            "how much do I owe to my credit card this month"
+          ]
+        },
+        {
+          "name": "CreditCardBillPayIntent",
+          "slots": [],
+          "samples": [
+            "yeah",
+            "yes",
+            "sure"
+          ]
+        },
+        {
+          "name": "CreditCardBillDontPayIntent",
+          "slots": [],
+          "samples": [
+            "no thanks",
+            "not now",
+            "nope",
+            "no"
+          ]
+        },
+        {
+          "name": "CreditCardPayFullAmountIntent",
+          "slots": [],
+          "samples": [
+            "full amount please",
+            "full amount",
+            "full"
+          ]
+        },
+        {
+          "name": "CreditCardPayBaseAmountIntent",
+          "slots": [],
+          "samples": [
+            "base amount please",
+            "base amount",
+            "base"
+          ]
+        },
+        {
+          "name": "CreditCardPayPrefferedAmountIntent",
+          "slots": [
+            {
+              "name": "amount",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "{amount} please",
+            "I would like to pay {amount} please",
+            "I would like to pay {amount}",
+            "{amount}"
+          ]
+        }
+      ],
+      "types": [],
+      "modelConfiguration": {
+        "fallbackIntentSensitivity": {
+          "level": "LOW"
+        }
+      }
+    }
+  },
+  "version": "43"
+}
