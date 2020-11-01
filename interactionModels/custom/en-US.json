@@ -1,0 +1,484 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "voice banking",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CheckBalanceIntent",
+          "slots": [],
+          "samples": [
+            "how much do i have in my account",
+            "how much do i have in saving",
+            "i\u0027d like to know my account balance",
+            "i\u0027d like to check my saving"
+          ]
+        },
+        {
+          "name": "FundTransferIntent",
+          "slots": [
+            {
+              "name": "beneficiary",
+              "type": "beneficiary_type",
+              "samples": [
+                "{beneficiary}"
+              ]
+            },
+            {
+              "name": "money",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{money}"
+              ]
+            },
+            {
+              "name": "voice_pin",
+              "type": "AMAZON.FOUR_DIGIT_NUMBER",
+              "samples": [
+                "{voice_pin}"
+              ]
+            }
+          ],
+          "samples": [
+            "{voice_pin}",
+            "i\u0027d like to transfer {money} to {beneficiary}",
+            "i\u0027d like to transfer fund",
+            "i\u0027d like to do fund transfer"
+          ]
+        },
+        {
+          "name": "PayBillIntent",
+          "slots": [
+            {
+              "name": "full_or_base",
+              "type": "payment_type"
+            }
+          ],
+          "samples": [
+            "{full_or_base}",
+            "Yes i\u0027d like to pay"
+          ]
+        },
+        {
+          "name": "CheckBillIntent",
+          "slots": [],
+          "samples": [
+            "how much is my credit card bill",
+            "how much do i owe to credit card"
+          ]
+        },
+        {
+          "name": "FreezeCardIntent",
+          "slots": [
+            {
+              "name": "card",
+              "type": "card_type",
+              "samples": [
+                "{card}"
+              ]
+            },
+            {
+              "name": "vpin",
+              "type": "AMAZON.FOUR_DIGIT_NUMBER",
+              "samples": [
+                "{vpin}"
+              ]
+            }
+          ],
+          "samples": [
+            "{vpin}",
+            "my voice pin is {vpin}",
+            "i\u0027d like to block my card",
+            "i\u0027d like to freeze my card",
+            "block my {card}",
+            "i\u0027ve lost my card"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "landlord"
+              }
+            },
+            {
+              "name": {
+                "value": "dad"
+              }
+            },
+            {
+              "name": {
+                "value": "mom"
+              }
+            }
+          ],
+          "name": "beneficiary_type"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "full"
+              }
+            },
+            {
+              "name": {
+                "value": "base"
+              }
+            }
+          ],
+          "name": "payment_type"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "i think"
+              }
+            },
+            {
+              "name": {
+                "value": "sure"
+              }
+            },
+            {
+              "name": {
+                "value": "yep"
+              }
+            },
+            {
+              "name": {
+                "value": "yes"
+              }
+            }
+          ],
+          "name": "yes_type"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "not now"
+              }
+            },
+            {
+              "name": {
+                "value": "later"
+              }
+            },
+            {
+              "name": {
+                "value": "nope"
+              }
+            },
+            {
+              "name": {
+                "value": "no"
+              }
+            }
+          ],
+          "name": "no_type"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "debit"
+              }
+            },
+            {
+              "name": {
+                "value": "credit"
+              }
+            }
+          ],
+          "name": "card_type"
+        }
+      ],
+      "modelConfiguration": {
+        "fallbackIntentSensitivity": {
+          "level": "LOW"
+        }
+      }
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "FundTransferIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.1457932843892"
+          },
+          "slots": [
+            {
+              "name": "beneficiary",
+              "type": "beneficiary_type",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1576313313556.402617162299"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1576313313556.402617162299.872376071079",
+                  "values": [
+                    "landlord",
+                    "dad",
+                    "mom"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "money",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1576313313556.1118888461174"
+              }
+            },
+            {
+              "name": "voice_pin",
+              "type": "AMAZON.FOUR_DIGIT_NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1457932843892.785371113004"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1457932843892.785371113004.531378910577",
+                  "values": [
+                    "2323"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PayBillIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "full_or_base",
+              "type": "payment_type",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {},
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.833269821142.1397716156639.1576570363969",
+                  "values": [
+                    "base",
+                    "full"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "FreezeCardIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "card",
+              "type": "card_type",
+              "elicitationRequired": true,
+              "confirmationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.848010135689.358248567494",
+                "elicitation": "Elicit.Slot.848010135689.358248567494"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.848010135689.358248567494.1580027696129",
+                  "values": [
+                    "credit",
+                    "debit"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "vpin",
+              "type": "AMAZON.FOUR_DIGIT_NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.848010135689.540379318038"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.848010135689.540379318038.1475403628071",
+                  "values": [
+                    "2323"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.1576313313556.1118888461174",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "how much money would you like to transfer?"
+          },
+          {
+            "type": "PlainText",
+            "value": "how much would you like to transfer?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1576313313556.402617162299",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "to whom would you like to transfer?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1576313313556.402617162299.872376071079",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "sorry that is not on your beneficiary list. you can transfer to mom, dad or landlord"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.833269821142.1397716156639",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "how much would you like to pay?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.833269821142.1397716156639.1576570363969",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "you can say base payment or say full to avoid any extra charges"
+          },
+          {
+            "type": "PlainText",
+            "value": "you can pay as base or full"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.848010135689.358248567494",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Sure I can help you with that. which card would you like to freeze?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.848010135689.358248567494",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Are you sure you want to freeze your {card} card?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.848010135689.358248567494.1580027696129",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "you can say credit or debit"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.848010135689.540379318038",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "would you like to confirm your voice pin?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.848010135689.540379318038.1475403628071",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "sorry that was correct. please provide yor voice pin"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.1457932843892",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "You are transferring {money} to {beneficiary} . Please confirm. "
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1457932843892.785371113004",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please provide your voice pin"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1457932843892.785371113004.531378910577",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "sorry that was not correct. Please provide your voice pin."
+          }
+        ]
+      }
+    ]
+  },
+  "version": "21"
+}
